@@ -1,11 +1,8 @@
-# 🚀 Abdullah Metlo — Personal Portfolio
+# Abdullah Metlo : Personal Portfolio
 
 <div align="center">
-
-  <img src="https://capsule-render.vercel.app/api?type=waving&color=gradient&customColorList=0,16,185,129,0,6,182,212&height=180&section=header&text=Abdullah%20Metlo&fontSize=42&fontColor=ffffff&fontAlignY=38&desc=Full-Stack%20Software%20Developer%20%7C%20Data%20%26%20ML%20Specialist&descFontSize=18&descAlignY=62" width="100%" alt="Abdullah Metlo Banner" />
-
   <p align="center">
-    <strong>Modern, high-performance developer portfolio featuring bespoke 3D micro-interactions, canvas particle physics, and responsive glassmorphism.</strong>
+    <strong>My personal developer portfolio built with Next.js, Tailwind CSS, and Framer Motion.</strong>
   </p>
 
   <p align="center">
@@ -19,118 +16,97 @@
 
 ---
 
-## ✨ Overview
+## About Me and This Project
 
-This repository houses the personal portfolio of **Abdullah Metlo**, a Computer Science graduate from **Swansea University** and Software Developer based in **London, UK**. 
+Hi there! I am Abdullah, a Computer Science graduate from Swansea University currently based in London, UK.
 
-The web application is built from the ground up using **Next.js 16 (App Router)**, **Tailwind CSS v4**, **Framer Motion**, and **Lucide React**, blending engineering rigor with interactive, state-of-the-art UI design.
+I built this portfolio to showcase what I love doing most: creating reliable full-stack web applications, writing automated data-collection scripts in Python, and experimenting with practical machine learning models. 
 
----
-
-## 🌟 Key Highlights & Features
-
-- 🎯 **Interactive Expanding Logo**: Displays `METLO` by default; hovering smoothly triggers `ABDULLAH ` to slide out from the left with spring-eased motion.
-- 🪪 **3D Tilt LinkedIn-Style Profile Card**:
-  - Authentic LinkedIn profile card featuring cover banner, overlapping monogram avatar, verified badge, headline, and London location.
-  - Interactive *"Message"*, *"Connect/Pending"*, and *"More"* dropdown actions.
-  - **3D Cursor-Tracking Perspective**: Smoothly tilts in 3D space toward the cursor with dynamic specular glare and an ambient levitation cycle.
-- 🌌 **Interactive Starfield Canvas**:
-  - Background particle mesh tracking the cursor.
-  - **Repulsion Physics**: Stars physically accelerate and float away whenever the cursor approaches them.
-- ⏳ **Experience Timeline with Quantitative Toggles**:
-  - Vertical spine layout detailing roles at **SAJAK** and **Swansea University**.
-  - Expandable *"See quantitative achievements"* drawer revealing tangible business impact (e.g. *4,000+ transactions, 20% downtime reduction, 25% enquiry boost*).
-  - Interactive tech tag pills with emerald hover illumination.
-- 🛠️ **Interactive Tech Stack & Proficiency Modal**:
-  - Clickable skill cards filterable by category (*Frontend*, *Backend*, *Data & ML*, *DevOps*).
-  - **Proficiency Modal**: Features an animated **3-dot proficiency gauge**, years of experience, and real-world practical applications.
-- 📜 **Certifications Carousel**:
-  - Smooth horizontal slider showcasing verified credentials (**AWS Cloud Practitioner**, **Power BI Data Analyst**, **Python for Data Science & ML**).
-- 💼 **Categorized Project Showcase**:
-  - Interactive cards with live links, GitHub repos, and category filtering (*Full-Stack*, *Machine Learning*, *Data & Automation*).
-- 📬 **Direct Contact Channel**:
-  - Fully styled contact form with instant validation state and direct email/social channels.
+Rather than sticking with a generic template, I designed this site to feel interactive and alive with custom physics, fluid micro-interactions, and a clean dark aesthetic.
 
 ---
 
-## 🏗️ Project Architecture
+## What I Built Into the Site
+
+- **Expanding Logo**: Hover over the logo at the top left to see my full name smoothly expand out from the left.
+- **3D Floating Profile Card**: An authentic LinkedIn-style card on the left side of the hero section that tilts in 3D based on your cursor position, complete with realistic depth and specular lighting.
+- **Interactive Starlit Background**: A canvas particle background where stars gently drift and physically float away whenever your mouse gets close.
+- **Experience Timeline**: A breakdown of my work as an Assistant Web Developer at SAJAK and my time at Swansea University, featuring toggleable metrics showing real results like processing over 4,000 transactions and cutting downtime by 20%.
+- **Tech Stack with Proficiency Modals**: Click any skill badge to open a detailed modal showing my experience level via an animated gauge and real-world project context.
+- **Certifications Slider**: A clean horizontal carousel showcasing my credentials in AWS, Power BI, and Python Data Science.
+- **Project Showcase**: A filterable gallery of my full-stack, data automation, and machine learning projects.
+
+---
+
+## Technologies I Used
+
+- **Framework**: Next.js 16 (App Router) & React 19
+- **Language**: TypeScript
+- **Styling**: Tailwind CSS v4 with custom glassmorphic utilities
+- **Animations**: Framer Motion & HTML5 Canvas API
+- **Icons**: Lucide React
+- **Deployment**: Vercel
+
+---
+
+## Project Structure
 
 ```bash
 portfolio/
 ├── app/
 │   ├── components/
-│   │   ├── Navbar.tsx                # Interactive expanding logo & blur header
-│   │   ├── Hero.tsx                  # Two-column layout: 3D LinkedIn Card + Pitch
-│   │   ├── LinkedInCard.tsx          # 3D tilt & floating LinkedIn profile card
-│   │   ├── InteractiveBackground.tsx # Canvas starfield with mouse repulsion physics
-│   │   ├── About.tsx                 # Profile bio & Swansea University education
-│   │   ├── Experience.tsx            # Vertical spine timeline with quantitative toggles
-│   │   ├── Skills.tsx                # Interactive tech stack cards & category filters
-│   │   ├── SkillDetailModal.tsx      # Modal with 3-dot gauge & usage context
-│   │   ├── Certifications.tsx        # Horizontal certifications carousel
-│   │   ├── Projects.tsx              # Filterable project showcase cards
-│   │   ├── Contact.tsx               # Contact form UI & direct channels
-│   │   └── Footer.tsx                # Minimalist footer & back-to-top button
+│   │   ├── Navbar.tsx                # Expanding header navigation
+│   │   ├── Hero.tsx                  # Split hero with 3D profile card & intro
+│   │   ├── LinkedInCard.tsx          # 3D interactive tilt card
+│   │   ├── InteractiveBackground.tsx # Canvas starfield with cursor repulsion
+│   │   ├── About.tsx                 # Degree background & engineering focus
+│   │   ├── Experience.tsx            # Spine timeline with expandable impact metrics
+│   │   ├── Skills.tsx                # Clickable skill cards with category filters
+│   │   ├── SkillDetailModal.tsx      # Modal breakdown with proficiency meter
+│   │   ├── Certifications.tsx        # Horizontal certifications slider
+│   │   ├── Projects.tsx              # Filterable project showcase
+│   │   ├── Contact.tsx               # Contact form and direct links
+│   │   └── Footer.tsx                # Footer with quick links
 │   ├── data/
-│   │   └── portfolioData.ts          # Centralized data store (bio, skills, projects, jobs)
-│   ├── globals.css                   # Theme tokens, custom glassmorphism, scrollbars
-│   ├── layout.tsx                    # Root layout, metadata & SEO tags
-│   └── page.tsx                      # Main single-page application assembly
-├── public/                           # Static icons and assets
-├── package.json
-└── tsconfig.json
+│   │   └── portfolioData.ts          # Central data source for all content
+│   ├── globals.css                   # Theme definitions & layout utilities
+│   ├── layout.tsx                    # Layout and metadata
+│   └── page.tsx                      # Main single-page application
+├── public/                           # Static assets
+└── package.json
 ```
 
 ---
 
-## ⚡ Quick Start
+## Running Locally
 
-### 1. Clone the Repository
-```bash
-git clone https://github.com/abdullahmetlo/abdullahmetlo-portfolio.git
-cd abdullahmetlo-portfolio
-```
+If you would like to run this on your own machine:
 
-### 2. Install Dependencies
-```bash
-npm install
-```
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/abdullahmetlo/abdullahmetlo-portfolio.git
+   cd abdullahmetlo-portfolio
+   ```
 
-### 3. Run Development Server
-```bash
-npm run dev
-```
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
 
-Open [http://localhost:3000](http://localhost:3000) in your browser to view the application live.
+3. Start the development server:
+   ```bash
+   npm run dev
+   ```
 
-### 4. Build for Production
-```bash
-npm run build
-npm run start
-```
+4. Open `http://localhost:3000` in your browser.
 
 ---
 
-## ⚙️ Customization
+## Let us Connect
 
-All personal information, experience history, skills, certifications, and projects are centralized in a single file:
+I am always keen to discuss software engineering roles, machine learning ideas, or freelance projects.
 
-📄 **[`app/data/portfolioData.ts`](file:///c:/Users/abdullah/Documents/portfolio/app/data/portfolioData.ts)**
-
-You can easily update bio details, add new projects, or modify credentials in this file without modifying component logic.
-
----
-
-## 📬 Contact & Connect
-
-**Abdullah Metlo** — London, UK
-
-- 🌐 **GitHub**: [github.com/abdullahmetlo](https://github.com/abdullahmetlo)
-- 💼 **LinkedIn**: [linkedin.com](https://linkedin.com)
-- 📧 **Email**: [contact@abdullah.dev](mailto:contact@abdullah.dev)
-
----
-
-<div align="center">
-  <sub>Built with ❤️ using Next.js, Tailwind CSS & Framer Motion.</sub>
-</div>
+- **GitHub**: [github.com/abdullahmetlo](https://github.com/abdullahmetlo)
+- **LinkedIn**: [linkedin.com](https://linkedin.com)
+- **Email**: [contact@abdullah.dev](mailto:contact@abdullah.dev)
+- **Location**: London, United Kingdom
