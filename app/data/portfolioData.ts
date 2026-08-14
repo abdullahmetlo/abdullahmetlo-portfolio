@@ -69,9 +69,9 @@ export const portfolioData = {
       "Full-Stack Engineer",
       "Data Analyst / ML Engineer",
     ],
-    email: "abdullah.metlo@example.com",
-    github: "https://github.com",
-    linkedin: "https://linkedin.com",
+    email: "abdullahmetlo@gmail.com",
+    github: "https://github.com/abdullahmetlo",
+    linkedin: "https://www.linkedin.com/in/abdullahmetlo/",
     twitter: "https://twitter.com",
   },
 
@@ -312,7 +312,7 @@ export const portfolioData = {
       liveUrl: "https://example.com",
       featured: true,
       metrics: "94.8% Detection Accuracy • <15ms inference",
-      accentColor: "from-emerald-500 to-teal-600",
+      accentColor: "from-[#0072b1] via-sky-500 to-cyan-500",
     },
     {
       id: "proj-2",
@@ -338,7 +338,7 @@ export const portfolioData = {
       liveUrl: "https://example.com",
       featured: true,
       metrics: "4,000+ Transactions • 20% downtime cut",
-      accentColor: "from-emerald-600 to-cyan-600",
+      accentColor: "from-[#0072b1] to-blue-600",
     },
     {
       id: "proj-4",

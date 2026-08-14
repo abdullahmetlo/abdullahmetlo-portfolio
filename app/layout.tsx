@@ -30,6 +30,8 @@ export const metadata: Metadata = {
   ],
 };
 
+import { ThemeProvider } from "./context/ThemeContext";
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -38,10 +40,11 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} scroll-smooth antialiased`}
+      suppressHydrationWarning
+      className={`${geistSans.variable} ${geistMono.variable} scroll-smooth antialiased dark`}
     >
-      <body className="min-h-screen bg-[#05070c] text-zinc-100 flex flex-col font-sans selection:bg-emerald-500 selection:text-black">
-        {children}
+      <body className="min-h-screen bg-[#f8fafc] dark:bg-[#05070c] text-slate-900 dark:text-zinc-100 flex flex-col font-sans selection:bg-[#0072b1] selection:text-white transition-colors duration-300">
+        <ThemeProvider>{children}</ThemeProvider>
       </body>
     </html>
   );

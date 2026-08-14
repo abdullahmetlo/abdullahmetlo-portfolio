@@ -87,6 +87,8 @@ export default function InteractiveBackground() {
     document.addEventListener("mouseleave", handleMouseLeave);
 
     const render = () => {
+      const isDark = document.documentElement.classList.contains("dark");
+
       // Smooth mouse follow
       mouse.x += (mouse.targetX - mouse.x) * 0.12;
       mouse.y += (mouse.targetY - mouse.y) * 0.12;
@@ -103,9 +105,15 @@ export default function InteractiveBackground() {
           mouse.y,
           mouse.radius * 1.4
         );
-        cursorGlow.addColorStop(0, "rgba(16, 185, 129, 0.06)");
-        cursorGlow.addColorStop(0.5, "rgba(6, 182, 212, 0.02)");
-        cursorGlow.addColorStop(1, "rgba(5, 7, 12, 0)");
+        if (isDark) {
+          cursorGlow.addColorStop(0, "rgba(0, 114, 177, 0.08)");
+          cursorGlow.addColorStop(0.5, "rgba(6, 182, 212, 0.03)");
+          cursorGlow.addColorStop(1, "rgba(5, 7, 12, 0)");
+        } else {
+          cursorGlow.addColorStop(0, "rgba(0, 114, 177, 0.06)");
+          cursorGlow.addColorStop(0.5, "rgba(56, 189, 248, 0.02)");
+          cursorGlow.addColorStop(1, "rgba(248, 250, 252, 0)");
+        }
 
         ctx.fillStyle = cursorGlow;
         ctx.fillRect(0, 0, width, height);
@@ -121,12 +129,10 @@ export default function InteractiveBackground() {
         const dist = Math.sqrt(dx * dx + dy * dy);
 
         if (dist < mouse.radius && dist > 1) {
-          // Repulsion intensity inversely proportional to distance
-          const repelFactor = (1 - dist / mouse.radius);
+          const repelFactor = 1 - dist / mouse.radius;
           const force = repelFactor * 1.8;
           const angle = Math.atan2(dy, dx);
 
-          // Push star away from mouse
           s.vx += Math.cos(angle) * force;
           s.vy += Math.sin(angle) * force;
         }
@@ -147,26 +153,29 @@ export default function InteractiveBackground() {
 
         // 3. Twinkle Phase
         s.twinklePhase += s.twinkleSpeed;
-        const twinkleAlpha =
-          s.baseAlpha + Math.sin(s.twinklePhase) * 0.25;
+        const twinkleAlpha = s.baseAlpha + Math.sin(s.twinklePhase) * 0.25;
         const finalAlpha = Math.max(0.1, Math.min(0.95, twinkleAlpha));
 
         // 4. Draw Star Core & Starlight Halo
-        // Outer soft glow
         ctx.beginPath();
         ctx.arc(s.x, s.y, s.radius * 2.2, 0, Math.PI * 2);
-        ctx.fillStyle = `rgba(16, 185, 129, ${finalAlpha * 0.25})`;
+        ctx.fillStyle = isDark
+          ? `rgba(0, 114, 177, ${finalAlpha * 0.3})`
+          : `rgba(0, 114, 177, ${finalAlpha * 0.2})`;
         ctx.fill();
 
-        // Inner bright star core
         ctx.beginPath();
         ctx.arc(s.x, s.y, s.radius, 0, Math.PI * 2);
-        ctx.fillStyle = `rgba(220, 252, 231, ${finalAlpha})`;
+        ctx.fillStyle = isDark
+          ? `rgba(224, 242, 254, ${finalAlpha})`
+          : `rgba(0, 114, 177, ${finalAlpha * 0.6})`;
         ctx.fill();
 
         // Subtle 4-point cross shimmer on brighter focal stars
         if (s.hasCrossGlow) {
-          ctx.strokeStyle = `rgba(167, 243, 208, ${finalAlpha * 0.4})`;
+          ctx.strokeStyle = isDark
+            ? `rgba(186, 230, 253, ${finalAlpha * 0.45})`
+            : `rgba(0, 114, 177, ${finalAlpha * 0.3})`;
           ctx.lineWidth = 0.5;
           ctx.beginPath();
           ctx.moveTo(s.x - s.radius * 3.5, s.y);
@@ -181,11 +190,13 @@ export default function InteractiveBackground() {
           const s2 = stars[j];
           const distNodes = Math.hypot(s.x - s2.x, s.y - s2.y);
           if (distNodes < 95) {
-            const lineAlpha = (1 - distNodes / 95) * 0.08 * finalAlpha;
+            const lineAlpha = (1 - distNodes / 95) * (isDark ? 0.1 : 0.08) * finalAlpha;
             ctx.beginPath();
             ctx.moveTo(s.x, s.y);
             ctx.lineTo(s2.x, s2.y);
-            ctx.strokeStyle = `rgba(52, 211, 153, ${lineAlpha})`;
+            ctx.strokeStyle = isDark
+              ? `rgba(56, 189, 248, ${lineAlpha})`
+              : `rgba(0, 114, 177, ${lineAlpha})`;
             ctx.lineWidth = 0.5;
             ctx.stroke();
           }

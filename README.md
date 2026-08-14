@@ -20,21 +20,9 @@
 
 Hi there! I am Abdullah, a Computer Science graduate from Swansea University currently based in London, UK.
 
-I built this portfolio to showcase what I love doing most: creating reliable full-stack web applications, writing automated data-collection scripts in Python, and experimenting with practical machine learning models. 
+I built this portfolio to showcase what I love doing most: creating reliable full-stack web applications and experimenting with practical machine learning models. 
 
 Rather than sticking with a generic template, I designed this site to feel interactive and alive with custom physics, fluid micro-interactions, and a clean dark aesthetic.
-
----
-
-## What I Built Into the Site
-
-- **Expanding Logo**: Hover over the logo at the top left to see my full name smoothly expand out from the left.
-- **3D Floating Profile Card**: An authentic LinkedIn-style card on the left side of the hero section that tilts in 3D based on your cursor position, complete with realistic depth and specular lighting.
-- **Interactive Starlit Background**: A canvas particle background where stars gently drift and physically float away whenever your mouse gets close.
-- **Experience Timeline**: A breakdown of my work as an Assistant Web Developer at SAJAK and my time at Swansea University, featuring toggleable metrics showing real results like processing over 4,000 transactions and cutting downtime by 20%.
-- **Tech Stack with Proficiency Modals**: Click any skill badge to open a detailed modal showing my experience level via an animated gauge and real-world project context.
-- **Certifications Slider**: A clean horizontal carousel showcasing my credentials in AWS, Power BI, and Python Data Science.
-- **Project Showcase**: A filterable gallery of my full-stack, data automation, and machine learning projects.
 
 ---
 
@@ -107,6 +95,6 @@ If you would like to run this on your own machine:
 I am always keen to discuss software engineering roles, machine learning ideas, or freelance projects.
 
 - **GitHub**: [github.com/abdullahmetlo](https://github.com/abdullahmetlo)
-- **LinkedIn**: [linkedin.com](https://linkedin.com)
-- **Email**: [contact@abdullah.dev](mailto:contact@abdullah.dev)
+- **LinkedIn**: [linkedin.com](https://www.linkedin.com/in/abdullahmetlo/)
+- **Email**: [abdullahmetlo@gmail.com](mailto:abdullahmetlo@gmail.com)
 - **Location**: London, United Kingdom

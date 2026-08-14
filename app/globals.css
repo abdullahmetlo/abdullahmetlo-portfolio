@@ -1,13 +1,22 @@
 @import "tailwindcss";
 
+@custom-variant dark (&:where(.dark, .dark *));
+
 :root {
-  --background: #090d16;
+  --background: #f8fafc;
+  --foreground: #0f172a;
+  --card-bg: rgba(255, 255, 255, 0.85);
+  --card-border: rgba(226, 232, 240, 0.8);
+  --accent-blue: #0072b1;
+  --accent-cyan: #06b6d4;
+  --accent-indigo: #6366f1;
+}
+
+.dark {
+  --background: #05070c;
   --foreground: #f1f5f9;
   --card-bg: rgba(15, 23, 42, 0.75);
   --card-border: rgba(148, 163, 184, 0.12);
-  --accent-blue: #0a66c2;
-  --accent-cyan: #06b6d4;
-  --accent-indigo: #6366f1;
 }
 
 @theme inline {
@@ -19,7 +28,6 @@
 
 html {
   scroll-behavior: smooth;
-  color-scheme: dark;
 }
 
 body {
@@ -27,22 +35,28 @@ body {
   color: var(--foreground);
   font-family: var(--font-sans);
   overflow-x: hidden;
-  selection-background-color: #3b82f6;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  selection-background-color: #0072b1;
   selection-color: #ffffff;
 }
 
 /* Glassmorphism helpers */
 .glass-card {
-  background: rgba(15, 23, 42, 0.75);
+  background: var(--card-bg);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(148, 163, 184, 0.12);
+  border: 1px solid var(--card-border);
 }
 
 .glass-nav {
-  background: rgba(9, 13, 22, 0.85);
+  background: rgba(255, 255, 255, 0.85);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(226, 232, 240, 0.8);
+}
+
+.dark .glass-nav {
+  background: rgba(5, 7, 12, 0.85);
   border-bottom: 1px solid rgba(148, 163, 184, 0.1);
 }
 
@@ -67,12 +81,18 @@ body {
   width: 8px;
 }
 ::-webkit-scrollbar-track {
-  background: #090d16;
+  background: var(--background);
 }
 ::-webkit-scrollbar-thumb {
-  background: #1e293b;
+  background: #cbd5e1;
   border-radius: 4px;
 }
+.dark ::-webkit-scrollbar-thumb {
+  background: #1e293b;
+}
 ::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+.dark ::-webkit-scrollbar-thumb:hover {
   background: #334155;
 }

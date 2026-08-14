@@ -11,7 +11,7 @@ import Footer from "./components/Footer";
 
 export default function Home() {
   return (
-    <div className="relative min-h-screen bg-[#05070c] text-zinc-100 flex flex-col selection:bg-emerald-500 selection:text-black overflow-x-hidden">
+    <div className="relative min-h-screen bg-[#f8fafc] dark:bg-[#05070c] text-slate-900 dark:text-zinc-100 flex flex-col selection:bg-[#0072b1] selection:text-white overflow-x-hidden transition-colors duration-300">
       {/* Interactive mouse-tracking background */}
       <InteractiveBackground />
 
