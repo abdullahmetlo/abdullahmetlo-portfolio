@@ -42,9 +42,10 @@ export interface Certification {
   issuer: string;
   issueDate: string;
   credentialUrl?: string;
+  image: string;
   description: string;
   skills: string[];
-  iconType: "aws" | "data" | "cloud" | "dev";
+  iconType?: "aws" | "data" | "cloud" | "dev" | "ai" | "citi" | "cisco";
 }
 
 export const portfolioData = {
@@ -259,44 +260,59 @@ export const portfolioData = {
 
   certifications: [
     {
-      id: "cert-1",
-      title: "AWS Cloud Practitioner",
-      issuer: "Amazon Web Services (AWS)",
-      issueDate: "2024",
+      id: "cert-aws",
+      title: "AWS Cloud Practitioner Essentials",
+      issuer: "AWS Training & Certification",
+      issueDate: "July 02, 2026",
+      image: "/certificates/aws-cloud-practitioner.jpg",
       description:
-        "Comprehensive validation of AWS Cloud concepts, security, architecture, pricing, and compute/storage services.",
-      skills: ["AWS EC2", "S3", "IAM", "Cloud Architecture"],
+        "Comprehensive validation of fundamental AWS cloud concepts, core compute and storage architectures, cloud security principles, and cost optimization.",
+      skills: ["AWS Cloud", "Cloud Architecture", "EC2 & S3", "IAM", "Cloud Security"],
       iconType: "aws",
     },
     {
-      id: "cert-2",
-      title: "Power BI Data Analyst & Visualisation",
-      issuer: "Santander Open Academy",
-      issueDate: "2024",
+      id: "cert-citi",
+      title: "Technology Software Development Job Simulation",
+      issuer: "Citi (via Forage)",
+      issueDate: "July 07, 2026",
+      image: "/certificates/citi-software-dev.png",
       description:
-        "Advanced data extraction, DAX modeling, interactive report building, and business intelligence analytics.",
-      skills: ["Power BI", "DAX", "Data Modeling", "Business Intelligence"],
+        "Completed practical enterprise engineering simulation involving state diagrams, technical feature proposals, live web data querying, and data visualization.",
+      skills: ["Software Engineering", "State Diagrams", "Data Querying", "Data Visualization", "Technical Proposals"],
+      iconType: "citi",
+    },
+    {
+      id: "cert-linkedin-ai",
+      title: "What Is Generative AI?",
+      issuer: "LinkedIn Learning",
+      issueDate: "July 02, 2026",
+      image: "/certificates/linkedin-generative-ai.png",
+      description:
+        "In-depth course on generative AI capabilities, LLM architectures, generative tooling, prompt engineering techniques, and practical AI workflow integrations.",
+      skills: ["Generative AI", "AI Tools", "Prompt Engineering", "Large Language Models", "Artificial Intelligence"],
+      iconType: "ai",
+    },
+    {
+      id: "cert-cisco",
+      title: "Data Science Essentials with Python",
+      issuer: "Cisco Networking Academy",
+      issueDate: "July 03, 2026",
+      image: "/certificates/cisco-data-science.jpg",
+      description:
+        "Hands-on program covering Python data science pipelines, statistical analysis, data cleaning and manipulation, and predictive modeling foundations.",
+      skills: ["Python", "Data Science", "Pandas & NumPy", "Statistical Analysis", "Data Cleaning"],
       iconType: "data",
     },
     {
-      id: "cert-3",
-      title: "Python for Data Science & Machine Learning",
-      issuer: "Coursera / Deep Learning Specialization",
-      issueDate: "2023",
+      id: "cert-santander",
+      title: "Power BI Intermediate: Data Analysis and Modeling",
+      issuer: "Santander Open Academy",
+      issueDate: "August 12, 2026",
+      image: "/certificates/santander-power-bi.jpg",
       description:
-        "Mastery of NumPy, Pandas, Scikit-Learn, data visualization, feature engineering, and neural network foundations.",
-      skills: ["Python", "Scikit-Learn", "Pandas", "Machine Learning"],
-      iconType: "dev",
-    },
-    {
-      id: "cert-4",
-      title: "Full-Stack Web Development & Modern React",
-      issuer: "Meta / Coursera",
-      issueDate: "2023",
-      description:
-        "In-depth frontend & backend application engineering, component lifecycle, Next.js, and API security.",
-      skills: ["React", "Next.js", "REST APIs", "TypeScript"],
-      iconType: "dev",
+        "Advanced business intelligence certification covering relational data modeling, custom DAX measures, interactive KPI dashboards, and data transformation.",
+      skills: ["Power BI", "DAX Formulas", "Data Modeling", "Business Intelligence", "Data Analytics"],
+      iconType: "data",
     },
   ] as Certification[],
 
