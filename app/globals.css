@@ -3,13 +3,13 @@
 @custom-variant dark (&:where(.dark, .dark *));
 
 :root {
-  --background: #f8fafc;
-  --foreground: #0f172a;
-  --card-bg: rgba(255, 255, 255, 0.85);
-  --card-border: rgba(226, 232, 240, 0.8);
+  --background: #eef2f6;
+  --foreground: #1e293b;
+  --card-bg: rgba(255, 255, 255, 0.78);
+  --card-border: rgba(203, 213, 225, 0.75);
   --accent-blue: #0072b1;
-  --accent-cyan: #06b6d4;
-  --accent-indigo: #6366f1;
+  --accent-cyan: #0284c7;
+  --accent-indigo: #4f46e5;
 }
 
 .dark {
@@ -49,10 +49,10 @@ body {
 }
 
 .glass-nav {
-  background: rgba(255, 255, 255, 0.85);
+  background: rgba(238, 242, 246, 0.85);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
-  border-bottom: 1px solid rgba(226, 232, 240, 0.8);
+  border-bottom: 1px solid rgba(203, 213, 225, 0.8);
 }
 
 .dark .glass-nav {

@@ -31,9 +31,6 @@ export default function Projects() {
             <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 dark:text-white tracking-tight">
               Featured Systems & Applications
             </h2>
-            <p className="mt-3 text-slate-600 dark:text-zinc-400 text-sm sm:text-base max-w-xl">
-              Production web applications, automated distributed web scrapers, and predictive machine learning models.
-            </p>
           </div>
 
           {/* Filter Pills */}
@@ -42,11 +39,10 @@ export default function Projects() {
               <button
                 key={cat}
                 onClick={() => setSelectedCategory(cat)}
-                className={`px-3.5 py-1.5 text-xs font-medium rounded-lg transition-all ${
-                  selectedCategory === cat
-                    ? "bg-[#0072b1] text-white font-bold shadow-md shadow-[#0072b1]/30"
-                    : "text-slate-600 dark:text-zinc-400 hover:text-slate-900 dark:hover:text-white"
-                }`}
+                className={`px-3.5 py-1.5 text-xs font-medium rounded-lg transition-all ${selectedCategory === cat
+                  ? "bg-[#0072b1] text-white font-bold shadow-md shadow-[#0072b1]/30"
+                  : "text-slate-600 dark:text-zinc-400 hover:text-slate-900 dark:hover:text-white"
+                  }`}
               >
                 {cat}
               </button>
@@ -63,9 +59,8 @@ export default function Projects() {
             >
               {/* Top Accent line */}
               <div
-                className={`absolute top-0 left-0 right-0 h-1 bg-gradient-to-r ${
-                  project.accentColor || "from-[#0072b1] to-cyan-500"
-                } opacity-70 group-hover:h-1.5 transition-all duration-300`}
+                className={`absolute top-0 left-0 right-0 h-1 bg-gradient-to-r ${project.accentColor || "from-[#0072b1] to-cyan-500"
+                  } opacity-70 group-hover:h-1.5 transition-all duration-300`}
               />
 
               <div>

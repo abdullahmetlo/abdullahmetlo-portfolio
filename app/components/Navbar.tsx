@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { Menu, X, Github, Linkedin, Mail, ArrowUpRight } from "lucide-react";
 import { portfolioData } from "../data/portfolioData";
 import { motion } from "framer-motion";
@@ -8,16 +8,42 @@ import ThemeToggle from "./ThemeToggle";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
+  const [isTop, setIsTop] = useState(true);
+  const [isVisible, setIsVisible] = useState(true);
   const [isLogoHovered, setIsLogoHovered] = useState(false);
+
+  const lastScrollY = useRef(0);
 
   useEffect(() => {
     const handleScroll = () => {
-      setScrolled(window.scrollY > 20);
+      const currentScrollY = window.scrollY;
+      const scrollDiff = currentScrollY - lastScrollY.current;
+
+      // Check if at the very top
+      if (currentScrollY <= 20) {
+        setIsTop(true);
+        setIsVisible(true);
+      } else {
+        setIsTop(false);
+
+        // Threshold of 6px to avoid micro jitter
+        if (Math.abs(scrollDiff) > 6) {
+          if (scrollDiff > 0 && currentScrollY > 80 && !isOpen) {
+            // Scrolling down -> hide navbar (swipe up)
+            setIsVisible(false);
+          } else {
+            // Scrolling up -> show navbar (swipe down)
+            setIsVisible(true);
+          }
+        }
+      }
+
+      lastScrollY.current = currentScrollY;
     };
-    window.addEventListener("scroll", handleScroll);
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  }, [isOpen]);
 
   const navLinks = [
     { name: "About", href: "#about" },
@@ -30,10 +56,12 @@ export default function Navbar() {
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled
-          ? "bg-white/80 dark:bg-black/75 backdrop-blur-md border-b border-slate-200/80 dark:border-zinc-900/90 shadow-md dark:shadow-xl dark:shadow-black/80 py-3"
-          : "bg-transparent py-5"
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ease-in-out ${
+        isVisible ? "translate-y-0" : "-translate-y-full"
+      } ${
+        !isTop
+          ? "bg-white/80 dark:bg-black/75 backdrop-blur-md border-b border-slate-200/50 dark:border-zinc-900/60 shadow-md dark:shadow-xl dark:shadow-black/80 py-3"
+          : "bg-transparent py-5 border-b border-transparent"
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

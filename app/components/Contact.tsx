@@ -39,11 +39,9 @@ export default function Contact() {
             <span>Connect</span>
           </div>
           <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 dark:text-white tracking-tight">
-            Get In Touch With Abdullah
+            Get In Touch
           </h2>
-          <p className="mt-3 text-slate-600 dark:text-zinc-400 text-sm sm:text-base">
-            Open to software developer roles, ML & data engineering opportunities, or technical inquiries.
-          </p>
+
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 max-w-5xl mx-auto">
@@ -109,17 +107,6 @@ export default function Contact() {
                   </a>
                 </div>
               </div>
-            </div>
-
-            {/* Quick Availability Status Box */}
-            <div className="bg-[#0072b1]/10 dark:bg-gradient-to-r dark:from-[#0072b1]/15 dark:to-sky-950/40 border border-[#0072b1]/25 dark:border-[#0072b1]/30 rounded-2xl p-5 backdrop-blur-sm">
-              <div className="flex items-center gap-2 text-sm font-semibold text-slate-900 dark:text-white mb-1">
-                <span className="w-2.5 h-2.5 rounded-full bg-[#0072b1] dark:bg-sky-400 animate-pulse" />
-                <span>Immediate Availability</span>
-              </div>
-              <p className="text-xs text-slate-600 dark:text-zinc-300 leading-relaxed">
-                Eligible to work in the UK. Seeking full-time Software Developer, Full-Stack, and Data/ML roles.
-              </p>
             </div>
           </div>
 

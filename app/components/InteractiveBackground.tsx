@@ -21,11 +21,11 @@ export default function InteractiveBackground() {
       y: -1000,
       targetX: -1000,
       targetY: -1000,
-      radius: 170, // Repulsion influence radius
+      radius: 160, // Repulsion influence radius
     };
 
-    // Star particle density
-    const starCount = Math.min(Math.floor((width * height) / 10000), 100);
+    // Increased star particle density
+    const starCount = Math.min(Math.floor((width * height) / 4000), 260);
     const stars: Array<{
       x: number;
       y: number;
@@ -90,8 +90,8 @@ export default function InteractiveBackground() {
       const isDark = document.documentElement.classList.contains("dark");
 
       // Smooth mouse follow
-      mouse.x += (mouse.targetX - mouse.x) * 0.12;
-      mouse.y += (mouse.targetY - mouse.y) * 0.12;
+      mouse.x += (mouse.targetX - mouse.x) * 0.15;
+      mouse.y += (mouse.targetY - mouse.y) * 0.15;
 
       ctx.clearRect(0, 0, width, height);
 
@@ -103,7 +103,7 @@ export default function InteractiveBackground() {
           0,
           mouse.x,
           mouse.y,
-          mouse.radius * 1.4
+          mouse.radius * .5
         );
         if (isDark) {
           cursorGlow.addColorStop(0, "rgba(0, 114, 177, 0.08)");
@@ -130,16 +130,16 @@ export default function InteractiveBackground() {
 
         if (dist < mouse.radius && dist > 1) {
           const repelFactor = 1 - dist / mouse.radius;
-          const force = repelFactor * 1.8;
+          const force = repelFactor * 1.5;
           const angle = Math.atan2(dy, dx);
 
           s.vx += Math.cos(angle) * force;
           s.vy += Math.sin(angle) * force;
         }
 
-        // 2. Physics damping & gentle return towards base drift speed
-        s.vx += (s.baseVx - s.vx) * 0.035;
-        s.vy += (s.baseVy - s.vy) * 0.035;
+        // 2. Physics damping - smoothly and quickly restores to base drift speed
+        s.vx += (s.baseVx - s.vx) * 0.085;
+        s.vy += (s.baseVy - s.vy) * 0.085;
 
         // Apply velocity
         s.x += s.vx;
@@ -189,8 +189,8 @@ export default function InteractiveBackground() {
         for (let j = i + 1; j < stars.length; j++) {
           const s2 = stars[j];
           const distNodes = Math.hypot(s.x - s2.x, s.y - s2.y);
-          if (distNodes < 95) {
-            const lineAlpha = (1 - distNodes / 95) * (isDark ? 0.1 : 0.08) * finalAlpha;
+          if (distNodes < 85) {
+            const lineAlpha = (1 - distNodes / 85) * (isDark ? 0.08 : 0.06) * finalAlpha;
             ctx.beginPath();
             ctx.moveTo(s.x, s.y);
             ctx.lineTo(s2.x, s2.y);

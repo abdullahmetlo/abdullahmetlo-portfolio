@@ -29,9 +29,6 @@ export default function Skills() {
           <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 dark:text-white tracking-tight">
             Skills & Technical Proficiency
           </h2>
-          <p className="mt-3 text-slate-600 dark:text-zinc-400 text-sm sm:text-base">
-            Click any skill to inspect the proficiency level gauge, years of experience, and real-world usage context.
-          </p>
         </div>
 
         {/* Category Filter Pills */}
@@ -40,11 +37,10 @@ export default function Skills() {
             <button
               key={cat}
               onClick={() => setActiveCategory(cat)}
-              className={`px-4 py-1.5 rounded-full text-xs font-medium transition-all ${
-                activeCategory === cat
+              className={`px-4 py-1.5 rounded-full text-xs font-medium transition-all ${activeCategory === cat
                   ? "bg-[#0072b1] text-white font-bold shadow-md shadow-[#0072b1]/30"
                   : "bg-white dark:bg-zinc-900/90 text-slate-600 dark:text-zinc-400 border border-slate-200 dark:border-zinc-800 hover:text-slate-900 dark:hover:text-white hover:border-slate-300 dark:hover:border-zinc-700 shadow-sm dark:shadow-none"
-              }`}
+                }`}
             >
               {cat}
             </button>
@@ -69,11 +65,10 @@ export default function Skills() {
                     {[1, 2, 3].map((dot) => (
                       <span
                         key={dot}
-                        className={`w-2 h-2 rounded-full ${
-                          dot <= skill.levelScore
+                        className={`w-2 h-2 rounded-full ${dot <= skill.levelScore
                             ? "bg-[#0072b1] dark:bg-sky-400"
                             : "bg-slate-200 dark:bg-zinc-800"
-                        }`}
+                          }`}
                       />
                     ))}
                   </div>

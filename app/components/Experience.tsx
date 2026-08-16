@@ -7,7 +7,6 @@ import {
   ChevronDown,
   ChevronUp,
   MapPin,
-  Calendar,
   TrendingUp,
 } from "lucide-react";
 import { portfolioData, ExperienceItem } from "../data/portfolioData";
@@ -25,6 +24,31 @@ export default function Experience() {
     }));
   };
 
+  // Helper to render company name separated from sub-description with •
+  const renderCompany = (company: string) => {
+    const parts = company.split(/\s*[–-]\s*/);
+    if (parts.length > 1) {
+      const mainCompany = parts[0];
+      const subDesc = parts.slice(1).join(" • ");
+      return (
+        <div className="text-sm sm:text-base flex items-center flex-wrap gap-1.5 mt-1">
+          <span className="font-semibold text-[#0072b1] dark:text-sky-400">
+            @{mainCompany}
+          </span>
+          <span className="text-slate-400 dark:text-zinc-500 font-bold">•</span>
+          <span className="text-slate-500 dark:text-zinc-400 font-normal">
+            {subDesc}
+          </span>
+        </div>
+      );
+    }
+    return (
+      <div className="text-sm sm:text-base font-semibold text-[#0072b1] dark:text-sky-400 mt-1">
+        @{company}
+      </div>
+    );
+  };
+
   return (
     <section id="experience" className="py-24 relative overflow-hidden">
       {/* Ambient Glows */}
@@ -39,41 +63,36 @@ export default function Experience() {
             <span>Career History</span>
           </div>
           <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 dark:text-white tracking-tight">
-            Work Experience & Track Record
+            Experience
           </h2>
-          <p className="mt-3 text-slate-600 dark:text-zinc-400 text-sm sm:text-base">
-            Proven engineering contributions across scalable full-stack development, database query optimization, and quantitative business improvements.
-          </p>
         </div>
 
-        {/* Timeline Layout with Dates on Left Side */}
-        <div className="relative space-y-12 sm:space-y-14">
+        {/* Continuous Connected Timeline Layout */}
+        <div className="relative space-y-12 sm:space-y-14 pl-4 md:pl-0 before:absolute md:before:hidden before:top-4 before:bottom-4 before:left-2 before:w-1 before:bg-gradient-to-b before:from-[#0072b1] before:via-sky-400/80 before:to-[#0072b1]/20 before:rounded-full">
           {experience.map((item: ExperienceItem, idx: number) => {
             const isExpanded = !!expandedItems[item.id];
             const isLatest = idx === 0;
+            const isLast = idx === experience.length - 1;
 
             return (
               <div
                 key={item.id}
-                className="relative grid grid-cols-1 md:grid-cols-[180px_auto_1fr] gap-4 md:gap-8 items-start group"
+                className="relative grid grid-cols-1 md:grid-cols-[170px_auto_1fr] gap-4 md:gap-8 items-start group"
               >
-                {/* 1. Left Column: Date on the Left Side of Timeline */}
-                <div className="hidden md:flex flex-col items-end pt-5">
-                  <div className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-white dark:bg-zinc-900/90 border border-[#0072b1]/30 dark:border-sky-700/50 shadow-md shadow-slate-200/50 dark:shadow-black/60 backdrop-blur-md text-slate-800 dark:text-zinc-200 text-xs font-mono font-bold group-hover:border-[#0072b1] dark:group-hover:border-sky-400 transition-colors">
-                    <Calendar className="w-3.5 h-3.5 text-[#0072b1] dark:text-sky-400 shrink-0" />
+                {/* 1. Left Column: Subtle, smaller Date on the Left Side of Timeline */}
+                <div className="hidden md:flex flex-col items-end pt-5.5">
+                  <div className="inline-flex items-center justify-center whitespace-nowrap px-3 py-1 rounded-full bg-slate-100/70 dark:bg-zinc-900/60 border border-slate-200/70 dark:border-zinc-800/70 text-slate-500 dark:text-zinc-400 text-[11px] sm:text-xs font-mono font-normal transition-all group-hover:border-[#0072b1]/40 group-hover:text-slate-800 dark:group-hover:text-zinc-200">
                     <span>{item.period}</span>
-                    {isLatest && (
-                      <span className="text-[10px] uppercase font-bold tracking-wider px-1.5 py-0.5 bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 rounded-md border border-emerald-500/20 ml-1">
-                        Latest
-                      </span>
-                    )}
                   </div>
                 </div>
 
-                {/* 2. Middle Column: Timeline Spine & Glowing Node */}
+                {/* 2. Middle Column: Seamless Continuous Spine Line & Glowing Node */}
                 <div className="hidden md:flex flex-col items-center self-stretch relative">
-                  {/* Vertical Spine Line */}
-                  <div className="absolute top-0 bottom-0 w-1 bg-gradient-to-b from-[#0072b1] via-sky-400/80 to-[#0072b1]/10 rounded-full" />
+                  {/* Unbroken Vertical Spine Line connecting row to row */}
+                  <div
+                    className={`absolute top-0 w-1 bg-gradient-to-b from-[#0072b1] via-sky-400/80 to-[#0072b1] rounded-full z-0 ${isLast ? "bottom-6" : "-bottom-14 sm:-bottom-16"
+                      }`}
+                  />
 
                   {/* Glowing Milestone Node */}
                   <div className="relative mt-5 flex items-center justify-center shrink-0 w-10 h-10 rounded-full bg-white dark:bg-zinc-950 border-2 border-[#0072b1] shadow-lg shadow-[#0072b1]/30 dark:shadow-[#0072b1]/50 group-hover:border-sky-400 group-hover:scale-110 transition-all duration-300 z-10">
@@ -88,15 +107,9 @@ export default function Experience() {
                 </div>
 
                 {/* Mobile Date Header (Visible only on mobile screens < md) */}
-                <div className="flex md:hidden items-center gap-2 mb-1">
-                  <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white dark:bg-zinc-900 border border-[#0072b1]/30 dark:border-sky-700/50 text-slate-800 dark:text-zinc-200 text-xs font-mono font-bold shadow-sm">
-                    <Calendar className="w-3.5 h-3.5 text-[#0072b1] dark:text-sky-400" />
+                <div className="flex md:hidden items-center gap-2 mb-1 pl-3">
+                  <div className="inline-flex items-center whitespace-nowrap px-2.5 py-0.5 rounded-full bg-slate-100/80 dark:bg-zinc-900/80 border border-slate-200/70 dark:border-zinc-800/70 text-slate-500 dark:text-zinc-400 text-[11px] font-mono font-normal">
                     <span>{item.period}</span>
-                    {isLatest && (
-                      <span className="text-[10px] uppercase font-bold tracking-wider px-1.5 py-0.2 bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 rounded-md border border-emerald-500/20 ml-1">
-                        Latest
-                      </span>
-                    )}
                   </div>
                 </div>
 
@@ -118,21 +131,19 @@ export default function Experience() {
                   <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-[#0072b1] via-sky-400 to-cyan-400 opacity-60 group-hover:opacity-100 transition-opacity" />
 
                   {/* Card Header: 
-                      Line 1: Title
-                      Line 2: @ Company
+                      Line 1: Title (stays white on hover with a glow effect behind it)
+                      Line 2: @ Company • Sub-description
                       Line 3: Location 
                   */}
                   <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-4 mb-4">
                     <div>
-                      {/* Line 1: Title */}
-                      <h3 className="text-lg sm:text-xl font-bold text-slate-900 dark:text-white group-hover:text-[#0072b1] dark:group-hover:text-sky-400 transition-colors leading-snug">
+                      {/* Line 1: Title with glowing effect on hover */}
+                      <h3 className="text-lg sm:text-xl font-bold text-slate-900 dark:text-white transition-all duration-300 group-hover:text-slate-900 dark:group-hover:text-white group-hover:drop-shadow-[0_0_12px_rgba(0,114,177,0.45)] dark:group-hover:drop-shadow-[0_0_14px_rgba(56,189,248,0.7)] leading-snug">
                         {item.role}
                       </h3>
 
-                      {/* Line 2: @ Company */}
-                      <div className="text-sm sm:text-base font-semibold text-[#0072b1] dark:text-sky-400 mt-1">
-                        @{item.company}
-                      </div>
+                      {/* Line 2: @ Company • Sub-description */}
+                      {renderCompany(item.company)}
 
                       {/* Line 3: Location */}
                       <div className="flex items-center gap-1.5 text-xs text-slate-500 dark:text-zinc-400 mt-1.5">
